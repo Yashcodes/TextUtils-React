@@ -1,9 +1,17 @@
 import React, { useState } from "react";
 
 const TextForm = (props) => {
-  const handleUpClick = () => {
+  const handleUpperClick = () => {
     // console.log("Uppercase function was clicked" + text);
     setText(text.toUpperCase());
+  };
+
+  const handleLowerClick = () => {
+    setText(text.toLowerCase());
+  };
+
+  const handleClearClick = () => {
+    setText("");
   };
 
   const handleOnChange = (event) => {
@@ -16,23 +24,49 @@ const TextForm = (props) => {
   //setText("New text"); // Correct way to change the state
 
   return (
-    <div>
-      <div className="mb-3">
-        <label htmlFor="textArea" className="form-label">
-          <h1 className="mt-5">{props.heading}</h1>
-        </label>
-        <textarea
-          className="form-control"
-          value={text}
-          onChange={handleOnChange}
-          id="textArea"
-          rows="10"
-        ></textarea>
+    <>
+      <div className="container">
+        <div className="mb-3">
+          <label htmlFor="textArea" className="form-label">
+            <h1 className="mt-5">{props.heading}</h1>
+          </label>
+
+          <textarea
+            className="form-control"
+            value={text}
+            onChange={handleOnChange}
+            id="textArea"
+            rows="10"
+          ></textarea>
+        </div>
+
+        <button className="btn btn-primary" onClick={handleUpperClick}>
+          Convert to Uppercase
+        </button>
+
+        <button className="btn btn-primary mx-2" onClick={handleLowerClick}>
+          Convert to Uppercase
+        </button>
+
+        <button className="btn btn-primary mx-2" onClick={handleClearClick}>
+          Clear Text
+        </button>
       </div>
-      <button className="btn btn-primary" onClick={handleUpClick}>
-        Convert to Uppercase
-      </button>
-    </div>
+
+      <div className="container my-3">
+        <h1>Your text summary</h1>
+        <p>
+          {text.split(" ").length} words and {text.length} characters
+        </p>
+        <p>
+          Total time to read {text.split(" ").length} words is{" "}
+          {0.08 * text.split(" ").length}
+        </p>
+        
+        <h2>Preview</h2>
+        <p>{text}</p>
+      </div>
+    </>
   );
 };
 
