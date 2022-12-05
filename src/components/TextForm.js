@@ -19,6 +19,17 @@ const TextForm = (props) => {
     setText(event.target.value);
   };
 
+  const handleCopy = () => {
+    let text = document.getElementById("textArea");
+    text.select();
+    navigator.clipboard.writeText(text.value);
+  };
+
+  const handleExtraSpaces = () => {
+    let newText = text.split(/[ ]+/);
+    setText(newText.join(" "));
+  };
+
   const [text, setText] = useState("This is the text value");
   //text = "New text"; // Wrong way to change the state
   //setText("New text"); // Correct way to change the state
@@ -45,11 +56,19 @@ const TextForm = (props) => {
         </button>
 
         <button className="btn btn-primary mx-2" onClick={handleLowerClick}>
-          Convert to Uppercase
+          Convert to Lowercase
         </button>
 
         <button className="btn btn-primary mx-2" onClick={handleClearClick}>
           Clear Text
+        </button>
+
+        <button className="btn btn-primary mx-2" onClick={handleCopy}>
+          Copy Text
+        </button>
+
+        <button className="btn btn-primary mx-2" onClick={handleExtraSpaces}>
+          Remove Extra Spaces
         </button>
       </div>
 
@@ -62,7 +81,7 @@ const TextForm = (props) => {
           Total time to read {text.split(" ").length} words is{" "}
           {0.08 * text.split(" ").length}
         </p>
-        
+
         <h2>Preview</h2>
         <p>{text}</p>
       </div>
