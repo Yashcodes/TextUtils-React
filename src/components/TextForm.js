@@ -30,7 +30,7 @@ const TextForm = (props) => {
     setText(newText.join(" "));
   };
 
-  const [text, setText] = useState("This is the text value");
+  const [text, setText] = useState("");
   //text = "New text"; // Wrong way to change the state
   //setText("New text"); // Correct way to change the state
 
@@ -48,6 +48,11 @@ const TextForm = (props) => {
             onChange={handleOnChange}
             id="textArea"
             rows="10"
+            style={{
+              backgroundColor:
+                props.mode === "light" ? "white" : "rgb(35 38 42)",
+              color : props.mode === "light" ? "black" : "white"
+            }}
           ></textarea>
         </div>
 
@@ -75,11 +80,21 @@ const TextForm = (props) => {
       <div className="container my-3">
         <h1>Your text summary</h1>
         <p>
-          {text.split(" ").length} words and {text.length} characters
+          {text.length === 0 || text.endsWith(" ")
+            ? text.split(" ").length - 1
+            : text.split(" ").length}{" "}
+          words and {text.length} characters
         </p>
         <p>
-          Total time to read {text.split(" ").length} words is{" "}
-          {0.08 * text.split(" ").length}
+          Total time to read{" "}
+          {text.length === 0 || text.endsWith(" ")
+            ? text.split(" ").length - 1
+            : text.split(" ").length}{" "}
+          words is{" "}
+          {text.length === 0 || text.endsWith(" ")
+            ? 0.08 * (text.split(" ").length - 1)
+            : 0.08 * text.split(" ").length}{" "}
+          minutes
         </p>
 
         <h2>Preview</h2>

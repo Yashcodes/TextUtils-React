@@ -3,9 +3,11 @@ import PropTypes from "prop-types";
 
 const Navbar = (props) => {
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-dark">
+    <nav
+      className={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode}`}
+    >
       <div className="container-fluid">
-        <a className="navbar-brand text-primary fw-bold fs-4" href="/">
+        <a className="navbar-brand fw-bold fs-4" href="/">
           {props.title}
         </a>
         <button
@@ -23,7 +25,7 @@ const Navbar = (props) => {
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
               <a
-                className="nav-link active text-primary fs-5"
+                className="nav-link active fs-5"
                 aria-current="page"
                 href="/"
               >
@@ -31,11 +33,24 @@ const Navbar = (props) => {
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link text-primary fs-5" href="/">
+              <a className="nav-link fs-5" href="/">
                 {props.aboutText}
               </a>
             </li>
           </ul>
+
+          <div className={`form-check form-switch text-${props.mode === "dark" ? "light" : "dark"} mx-4`}>
+            <input
+              className="form-check-input"
+              type="checkbox"
+              id="flexSwitchCheckDefault"
+              onClick={props.toggleMode}
+            />
+            <label className="form-check-label" htmlFor="flexSwitchCheckDefault">
+              {props.modeTxt}
+            </label>
+          </div>
+
           <form className="d-flex">
             <input
               className="form-control me-2"
