@@ -4,14 +4,17 @@ const TextForm = (props) => {
   const handleUpperClick = () => {
     // console.log("Uppercase function was clicked" + text);
     setText(text.toUpperCase());
+    props.showAlert("Converted to Uppercase", "success");
   };
 
   const handleLowerClick = () => {
     setText(text.toLowerCase());
+    props.showAlert("Converted to Lowercase", "success");
   };
 
   const handleClearClick = () => {
     setText("");
+    props.showAlert("Text cleared", "success");
   };
 
   const handleOnChange = (event) => {
@@ -23,11 +26,13 @@ const TextForm = (props) => {
     let text = document.getElementById("textArea");
     text.select();
     navigator.clipboard.writeText(text.value);
+    props.showAlert("Copied to clipboard", "success");
   };
 
   const handleExtraSpaces = () => {
     let newText = text.split(/[ ]+/);
     setText(newText.join(" "));
+    props.showAlert("Extra spaces removed", "success")
   };
 
   const [text, setText] = useState("");
@@ -51,7 +56,7 @@ const TextForm = (props) => {
             style={{
               backgroundColor:
                 props.mode === "light" ? "white" : "rgb(35 38 42)",
-              color : props.mode === "light" ? "black" : "white"
+              color: props.mode === "light" ? "black" : "white",
             }}
           ></textarea>
         </div>
