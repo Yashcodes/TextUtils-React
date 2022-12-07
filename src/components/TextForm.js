@@ -44,7 +44,7 @@ const TextForm = (props) => {
       <div className="container">
         <div className="mb-3">
           <label htmlFor="textArea" className="form-label">
-            <h1 className="mt-5">{props.heading}</h1>
+            <h1 className="mt-3">{props.heading}</h1>
           </label>
 
           <textarea
