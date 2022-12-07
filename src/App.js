@@ -18,14 +18,12 @@ function App() {
       document.body.style.backgroundColor = "rgb(27 28 30)";
       document.body.style.color = "white";
       showAlert("Dark Mode Enabled!", "success");
-      // document.title = "TextUtils - Dark Mode";
     } else {
       setMode("light");
       setModeTxt("Dark");
       document.body.style.backgroundColor = "white";
       document.body.style.color = "black";
       showAlert("Light Mode Enabled!", "success");
-      // document.title = "TextUtils - Light Mode";
     }
   };
 
