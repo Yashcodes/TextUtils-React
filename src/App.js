@@ -18,14 +18,14 @@ function App() {
       document.body.style.backgroundColor = "rgb(27 28 30)";
       document.body.style.color = "white";
       showAlert("Dark Mode Enabled!", "success");
-      document.title = "TextUtils - Dark Mode";
+      // document.title = "TextUtils - Dark Mode";
     } else {
       setMode("light");
       setModeTxt("Dark");
       document.body.style.backgroundColor = "white";
       document.body.style.color = "black";
       showAlert("Light Mode Enabled!", "success");
-      document.title = "TextUtils - Light Mode";
+      // document.title = "TextUtils - Light Mode";
     }
   };
 
@@ -60,7 +60,7 @@ function App() {
               path="/"
               element={
                 <TextForm
-                  heading="Enter the text below to analyze it"
+                  heading="Try TextUtils - Word Counter Character Counter, Remove Extra Spaces"
                   mode={mode}
                   showAlert={showAlert}
                 />
