@@ -32,7 +32,7 @@ const TextForm = (props) => {
   const handleExtraSpaces = () => {
     let newText = text.split(/[ ]+/);
     setText(newText.join(" "));
-    props.showAlert("Extra spaces removed", "success")
+    props.showAlert("Extra spaces removed", "success");
   };
 
   const [text, setText] = useState("");
@@ -61,23 +61,23 @@ const TextForm = (props) => {
           ></textarea>
         </div>
 
-        <button className="btn btn-primary" onClick={handleUpperClick}>
+        <button className="btn btn-primary mx-1 my-1" onClick={handleUpperClick}>
           Convert to Uppercase
         </button>
 
-        <button className="btn btn-primary mx-2" onClick={handleLowerClick}>
+        <button className="btn btn-primary mx-1 my-1" onClick={handleLowerClick}>
           Convert to Lowercase
         </button>
 
-        <button className="btn btn-primary mx-2" onClick={handleClearClick}>
+        <button className="btn btn-primary mx-1 my-1" onClick={handleClearClick}>
           Clear Text
         </button>
 
-        <button className="btn btn-primary mx-2" onClick={handleCopy}>
+        <button className="btn btn-primary mx-1 my-1" onClick={handleCopy}>
           Copy Text
         </button>
 
-        <button className="btn btn-primary mx-2" onClick={handleExtraSpaces}>
+        <button className="btn btn-primary mx-1 my-1" onClick={handleExtraSpaces}>
           Remove Extra Spaces
         </button>
       </div>
@@ -85,20 +85,26 @@ const TextForm = (props) => {
       <div className="container my-3">
         <h1>Your text summary</h1>
         <p>
-          {text.length === 0 || text.endsWith(" ")
-            ? text.split(" ").length - 1
-            : text.split(" ").length}{" "}
+          {
+            text.split(" ").filter((element) => {
+              return element.length !== 0;
+            }).length
+          }{" "}
           words and {text.length} characters
         </p>
+
         <p>
           Total time to read{" "}
-          {text.length === 0 || text.endsWith(" ")
-            ? text.split(" ").length - 1
-            : text.split(" ").length}{" "}
+          {
+            text.split(" ").filter((element) => {
+              return element.length !== 0;
+            }).length
+          }{" "}
           words is{" "}
-          {text.length === 0 || text.endsWith(" ")
-            ? 0.08 * (text.split(" ").length - 1)
-            : 0.08 * text.split(" ").length}{" "}
+          {0.08 *
+            text.split(" ").filter((element) => {
+              return element.length !== 0;
+            }).length}{" "}
           minutes
         </p>
 
